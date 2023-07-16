@@ -6,7 +6,19 @@
                type="text"
                class="py-3 px-5 w-full text-2xl rounded-full focus:outline-none"
                placeholder="Search by city..."
+               v-model="city"
              />
-             <button class="bg-sky-500 px-10 text-white">Search</button>
+             <button @click="handleSearch" class="bg-sky-500 px-10 text-white">Search</button>
            </div>
 </template>
+
+<script setup>
+const city =  ref("")
+
+const handleSearch = () => {
+  if(!city.value){
+    return;
+  }
+  navigateTo(`/city/${city.value}/car/all`)
+}
+</script>
